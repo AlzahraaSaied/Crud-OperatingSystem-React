@@ -53,7 +53,7 @@ function App() {
         console.error("There was an error adding the car:", error);
       })
       .finally(() => {
-        setLoading(false); // Stop loading
+        setLoading(false);
       });
   };
   
