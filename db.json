@@ -1,0 +1,67 @@
+{
+  "car": [
+    {
+      "id": 1,
+      "brand": "Hyundai",
+      "name": "Ioniq",
+      "releaseYear": "2023",
+      "color": "blue"
+    },
+    {
+      "id": 2,
+      "brand": "Toyota",
+      "name": "Prius",
+      "releaseYear": 2007,
+      "color": "blue"
+    },
+    {
+      "id": 3,
+      "brand": "Chevrolet",
+      "name": "Aveo",
+      "releaseYear": 2007,
+      "color": "white"
+    },
+    {
+      "id": 4,
+      "brand": "bmw",
+      "name": "bmw",
+      "releaseYear": "2010",
+      "color": "red"
+    },
+    {
+      "brand": "marcenduis",
+      "name": "marcenduis",
+      "releaseYear": "2001",
+      "color": "black",
+      "id": 5
+    },
+    {
+      "brand": "hundaw",
+      "name": "hu",
+      "releaseYear": "2010",
+      "color": "red",
+      "id": 6
+    },
+    {
+      "brand": "Buick",
+      "name": "Buick",
+      "releaseYear": "2001",
+      "color": "black",
+      "id": 7
+    },
+    {
+      "brand": "Ford",
+      "name": "Ford",
+      "releaseYear": "2005",
+      "color": "yellow",
+      "id": 8
+    },
+    {
+      "brand": "Acura",
+      "name": "Acura",
+      "releaseYear": "2007",
+      "color": "blue",
+      "id": 9
+    }
+  ]
+}
