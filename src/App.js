@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useState,useCallback } from "react";
 import axios from "axios";
 import "./App.css";
 import Actions from "./components/Actions/Actions";
@@ -28,6 +28,8 @@ function App() {
     color: "",
   });
 
+  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
@@ -55,7 +57,7 @@ function App() {
   };
 
   // Edit the record
-  const handleEdit = (id) => {
+  const handleEdit = useCallback((id) => {
     const recordToEdit = records.find((record) => record.id === id);
     if (recordToEdit) {
       setShowModal(true);
@@ -73,7 +75,8 @@ function App() {
         setErrorMessage("");
       }, 2000);
     }
-  };
+  }, [records]);
+
 
   // Update the record
   const handleUpdate = (e) => {
@@ -99,7 +102,7 @@ function App() {
   };
 
   // view the record
-  const handleView = (id) => {
+  const handleView = useCallback((id) => {
     const recordToView = records.find((record) => record.id === id);
     if (recordToView) {
       setShowModal(true);
@@ -116,10 +119,10 @@ function App() {
         setErrorMessage("");
       }, 2000);
     }
-  };
+  }, [records]);
 
   // delete
-  const handleDelete = (id) => {
+  const handleDelete = useCallback((id) => {
     axios
       .delete(`http://localhost:3000/car/${id}`)
       .then(() => {
@@ -137,7 +140,7 @@ function App() {
           setErrorMessage("");
         }, 2000);
       });
-  };
+  }, [records]);
 
   useEffect(() => {
     setLoading(true);
@@ -250,10 +253,10 @@ function App() {
         {errorMessage && <div className="error-message">{successMessage}</div>}
       </form>
 
-      <div className="shadow-md sm:rounded-lg mt-10">
-        <table className="w-3/5 ml-auto me-auto text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 mt-5">
+      <div className="shadow-md  sm:rounded-lg mt-10">
+        <table className="w-3/4 ml-auto me-auto text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 mt-5">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
+            <tr >
               {columns.map((c, index) => (
                 <th className="px-6 py-4" key={index}>
                   {c}
@@ -308,7 +311,7 @@ function App() {
                 {modalContent.releaseYear}
               </li>
               <li className="py-2 text-gray-600">
-                <span className="text-green-600 pe-2">Color:</span>{" "}
+                <span className="text-green-600 font-medium pe-2">Color:</span>{" "}
                 {modalContent.color}
               </li>
             </ul>

@@ -48,13 +48,6 @@
       "releaseYear": "2001",
       "color": "black",
       "id": 7
-    },
-    {
-      "brand": "Ford",
-      "name": "Ford",
-      "releaseYear": "2005",
-      "color": "yellow",
-      "id": 8
     }
   ]
 }
