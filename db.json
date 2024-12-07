@@ -4,7 +4,7 @@
       "id": 1,
       "brand": "Hyundai",
       "name": "Ioniq",
-      "releaseYear": "2023",
+      "releaseYear": "2024",
       "color": "blue"
     },
     {
@@ -55,13 +55,6 @@
       "releaseYear": "2005",
       "color": "yellow",
       "id": 8
-    },
-    {
-      "brand": "Acura",
-      "name": "Acura",
-      "releaseYear": "2007",
-      "color": "blue",
-      "id": 9
     }
   ]
 }

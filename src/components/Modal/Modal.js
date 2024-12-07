@@ -12,7 +12,7 @@ const Overlay = ({ show, close, title, children }) => {
   return (
     <div className={`${styles.overlay} ${show ? styles.showOverLay : null}`}>
       <div className={styles.modalContent}>
-        <FontAwesomeIcon icon={faXmark} size="lg" border style={{ cursor: "pointer" }} onClick={close} />
+        <FontAwesomeIcon icon={faXmark} size="lg" border style={{ cursor: "pointer" , marginBottom:"5px" , color:"red"}}  onClick={close} />
         {title && <h2>{title}</h2>}
         <div className={styles.modalContent}>{children}</div>
       </div>
