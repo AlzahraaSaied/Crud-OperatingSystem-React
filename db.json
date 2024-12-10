@@ -1,0 +1,95 @@
+{
+  "car": [
+    {
+      "id": 1,
+      "brand": "Hyundaiy",
+      "name": "Ionic",
+      "releaseYear": "2023",
+      "color": "red"
+    },
+    {
+      "id": 2,
+      "brand": "Toyota",
+      "name": "Prius",
+      "releaseYear": 2007,
+      "color": "blue"
+    },
+    {
+      "id": 3,
+      "brand": "Chevrolet",
+      "name": "Aveo",
+      "releaseYear": 2007,
+      "color": "white"
+    },
+    {
+      "id": 4,
+      "brand": "bmw",
+      "name": "bmw",
+      "releaseYear": "2010",
+      "color": "red"
+    },
+    {
+      "brand": "marcenduis",
+      "name": "marcenduis",
+      "releaseYear": "2001",
+      "color": "black",
+      "id": 5
+    },
+    {
+      "id": 7,
+      "brand": "Buick",
+      "name": "Buick",
+      "releaseYear": "2002",
+      "color": "black"
+    },
+    {
+      "brand": "Audi",
+      "name": "Audi",
+      "releaseYear": "2009",
+      "color": "gray",
+      "id": 8
+    },
+    {
+      "brand": "ford",
+      "name": "ford",
+      "releaseYear": "2010",
+      "color": "red",
+      "id": 9
+    },
+    {
+      "brand": "Bentley",
+      "name": "Bentley",
+      "releaseYear": "2007",
+      "color": "blue",
+      "id": 10
+    },
+    {
+      "brand": "Alfa Romeo",
+      "name": "Alfa Romeo",
+      "releaseYear": "2008",
+      "color": "blue",
+      "id": 11
+    },
+    {
+      "brand": "hundaw",
+      "name": "hu",
+      "releaseYear": "2001",
+      "color": "red",
+      "id": 12
+    },
+    {
+      "brand": "fklkl",
+      "name": "audi",
+      "releaseYear": "2003",
+      "color": "black",
+      "id": 13
+    },
+    {
+      "id": 14,
+      "brand": "Cadillac",
+      "name": "Cadillac",
+      "releaseYear": "2010",
+      "color": "red"
+    }
+  ]
+}
