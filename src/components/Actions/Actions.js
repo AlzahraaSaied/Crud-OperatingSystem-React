@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import { Fragment } from "react";
 import "./Actions.module.css";
 
 const Actions = ({ onEdit, onDelete, onView }) => {

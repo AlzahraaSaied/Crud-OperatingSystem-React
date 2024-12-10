@@ -1,19 +1,19 @@
-import { Fragment, useEffect, useState,useCallback } from "react";
+import { Fragment, useState,useCallback } from "react";
 import axios from "axios";
 import "./App.css";
 import Actions from "./components/Actions/Actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import Modal from "./components/Modal/Modal";
+import Info from "./components/forms/Info/Info";
+import Edit from "./components/forms/Edit/Edit";
+import useAxios from "./components/hooks/useAxios/useAxios";
 
 function App() {
-  const [columns, setColumns] = useState([]);
-  const [records, setRecords] = useState([]);
+  const {columns, records, setLoading, loading,errorMessage,setErrorMessage,setRecords} = useAxios("http://localhost:3000/car");
   const [successMessage, setSuccessMessage] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [modalContent, setModalContent] = useState(null);
-  const [errorMessage, setErrorMessage] = useState("");
-  const [loading, setLoading] = useState(false);
   const [modalMode, setModalMode] = useState("view");
   const [inputData, setInputData] = useState({
     brand: "",
@@ -26,8 +26,10 @@ function App() {
     name: "",
     releaseYear: "",
     color: "",
-  });
+  });  
 
+
+  
   
 
   const handleSubmit = (e) => {
@@ -45,7 +47,7 @@ function App() {
         setInputData({ brand: "", name: "", releaseYear: "", color: "" });
         setTimeout(() => {
           setSuccessMessage("");
-        }, 2000);
+        }, 3000);
       })
       .catch((error) => {
         setErrorMessage(error.message);
@@ -56,8 +58,10 @@ function App() {
       });
   };
 
+
+
   // Edit the record
-  const handleEdit = useCallback((id) => {
+   const handleEdit = useCallback((id) => {
     const recordToEdit = records.find((record) => record.id === id);
     if (recordToEdit) {
       setShowModal(true);
@@ -75,11 +79,11 @@ function App() {
         setErrorMessage("");
       }, 2000);
     }
-  }, [records]);
+  }, [records,setErrorMessage]);
 
 
   // Update the record
-  const handleUpdate = (e) => {
+   const handleUpdate = (e) => {
     e.preventDefault();
     setLoading(true);
 
@@ -99,7 +103,7 @@ function App() {
         setTimeout(() => setErrorMessage(""), 2000);
       })
       .finally(() => setLoading(false));
-  };
+  }; 
 
   // view the record
   const handleView = useCallback((id) => {
@@ -119,7 +123,7 @@ function App() {
         setErrorMessage("");
       }, 2000);
     }
-  }, [records]);
+  }, [records,setErrorMessage]);
 
   // delete
   const handleDelete = useCallback((id) => {
@@ -140,16 +144,20 @@ function App() {
           setErrorMessage("");
         }, 2000);
       });
-  }, [records]);
+  }, [records,setErrorMessage,setRecords,setLoading]);
 
-  useEffect(() => {
+ 
+ 
+
+
+  /* useEffect(() => {
     setLoading(true);
     axios.get("http://localhost:3000/car").then((response) => {
       setColumns(Object.keys(response.data[0]));
       setRecords(response.data);
     });
     setLoading(false);
-  }, []);
+  }, []);  */
 
   return (
     <Fragment>
@@ -257,7 +265,7 @@ function App() {
         <table className="w-3/4 ml-auto me-auto text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 mt-5">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr >
-              {columns.map((c, index) => (
+              {columns?.map((c, index) => (
                 <th className="px-6 py-4" key={index}>
                   {c}
                 </th>
@@ -268,7 +276,7 @@ function App() {
             </tr>
           </thead>
           <tbody>
-            {records.map((d, index) => (
+            {records?.map((d, index) => (
               <tr key={index}>
                 <td className="px-6 py-4">{d.id}</td>
                 <td className="px-6 py-4">{d.brand}</td>
@@ -291,114 +299,18 @@ function App() {
         show={showModal}
         closeModal={() => setShowModal(false)}
         modalContent={modalContent}
+        
       >
-        {modalMode === "view" && modalContent && (
-          <Fragment>
-            <h2 className="text-xl font-bold mb-4 text-center text-green-600 ">
-              Car Details
-            </h2>
-            <ul className="shadow-lg rounded-lg p-5 border border-gray-200">
-              <li className="py-2 text-gray-600 ">
-                <span className="text-green-600 font-medium pe-2">Brand:</span>
-                {modalContent.brand}
-              </li>
-              <li className="py-2 text-gray-600 ">
-                <span className="text-green-600 font-medium pe-2"> Name:</span>
-                {modalContent.name}
-              </li>
-              <li className="py-2 text-gray-600 ">
-                <span className="text-green-600 font-medium pe-2">Release Year:</span>{" "}
-                {modalContent.releaseYear}
-              </li>
-              <li className="py-2 text-gray-600">
-                <span className="text-green-600 font-medium pe-2">Color:</span>{" "}
-                {modalContent.color}
-              </li>
-            </ul>
-          </Fragment>
-        )}
+         {modalMode === "view" && modalContent?(
+          
+         <Info info={modalContent}/>
+        ):null} 
         {modalMode === "edit" && (
-          <Fragment>
-            <form
-              onSubmit={handleUpdate}
-              className="bg-white shadow-lg rounded-lg p-6 border border-gray-200 w-full max-w-md mx-auto"
-            >
-              <div className="mb-4">
-                <label className="block text-blue-700 font-medium mb-1">
-                  Brand:
-                </label>
-                <input
-                  type="text"
-                  value={modalInputData.brand}
-                  onChange={(e) =>
-                    setModalInputData({
-                      ...modalInputData,
-                      brand: e.target.value,
-                    })
-                  }
-                  className="w-full border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  required
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block text-blue-700 font-medium mb-1">
-                  Name:
-                </label>
-                <input
-                  type="text"
-                  value={modalInputData.name}
-                  onChange={(e) =>
-                    setModalInputData({
-                      ...modalInputData,
-                      name: e.target.value,
-                    })
-                  }
-                  className="w-full border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  required
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block text-blue-700 font-medium mb-1">
-                  Release Year:
-                </label>
-                <input
-                  type="text"
-                  value={modalInputData.releaseYear}
-                  onChange={(e) =>
-                    setModalInputData({
-                      ...modalInputData,
-                      releaseYear: e.target.value,
-                    })
-                  }
-                  className="w-full border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  required
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block text-blue-700 font-medium mb-1">
-                  Color:
-                </label>
-                <input
-                  type="text"
-                  value={modalInputData.color}
-                  onChange={(e) =>
-                    setModalInputData({
-                      ...modalInputData,
-                      color: e.target.value,
-                    })
-                  }
-                  className="w-full border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  required
-                />
-              </div>
-              <button
-                type="submit"
-                className="w-full text-white bg-blue-600 hover:bg-blue-700 px-2 py-1 rounded font-medium transition-colors"
-              >
-                {loading ? <FontAwesomeIcon icon={faSpinner} spin /> : "Update"}
-              </button>
-            </form>
-          </Fragment>
+          <Edit edit={modalInputData}
+             handleUpdate={handleUpdate}
+             setModalInputData={setModalInputData}
+             loading={loading}
+          />
         )}
       </Modal>
     </Fragment>

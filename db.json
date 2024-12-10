@@ -2,10 +2,10 @@
   "car": [
     {
       "id": 1,
-      "brand": "Hyundai",
-      "name": "Ioniq",
-      "releaseYear": "2024",
-      "color": "blue"
+      "brand": "Hyundaiy",
+      "name": "Ionic",
+      "releaseYear": "2023",
+      "color": "red"
     },
     {
       "id": 2,
@@ -36,18 +36,60 @@
       "id": 5
     },
     {
-      "brand": "hundaw",
-      "name": "hu",
-      "releaseYear": "2010",
-      "color": "red",
-      "id": 6
-    },
-    {
+      "id": 7,
       "brand": "Buick",
       "name": "Buick",
+      "releaseYear": "2002",
+      "color": "black"
+    },
+    {
+      "brand": "Audi",
+      "name": "Audi",
+      "releaseYear": "2009",
+      "color": "gray",
+      "id": 8
+    },
+    {
+      "brand": "ford",
+      "name": "ford",
+      "releaseYear": "2010",
+      "color": "red",
+      "id": 9
+    },
+    {
+      "brand": "Bentley",
+      "name": "Bentley",
+      "releaseYear": "2007",
+      "color": "blue",
+      "id": 10
+    },
+    {
+      "brand": "Alfa Romeo",
+      "name": "Alfa Romeo",
+      "releaseYear": "2008",
+      "color": "blue",
+      "id": 11
+    },
+    {
+      "brand": "hundaw",
+      "name": "hu",
       "releaseYear": "2001",
+      "color": "red",
+      "id": 12
+    },
+    {
+      "brand": "fklkl",
+      "name": "audi",
+      "releaseYear": "2003",
       "color": "black",
-      "id": 7
+      "id": 13
+    },
+    {
+      "id": 14,
+      "brand": "Cadillac",
+      "name": "Cadillac",
+      "releaseYear": "2010",
+      "color": "red"
     }
   ]
 }
